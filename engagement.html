@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        :root {
+            --bg: #0f1113;
+            --card-bg: #1a1d21;
+            --accent: #7a8d3e;
+            --text: #ccc;
+            --header-text: #ffffff;
+            --danger: #c0392b;
+            --warning: #f39c12;
+        }
+        body { 
+            background-color: var(--bg); 
+            color: var(--text); 
+            padding: 30px; 
+            font-family: 'Segoe UI', sans-serif;
+            line-height: 1.6;
+        }
+        h1, h2, h3 { color: var(--header-text); border-bottom: 1px solid var(--accent); padding-bottom: 10px; }
+        
+        .section-container { margin-bottom: 40px; }
+        
+        .box {
+            background: var(--card-bg);
+            border-left: 5px solid var(--accent);
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+
+        .roe-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .roe-card {
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: bold;
+            color: white;
+        }
+
+        .sitrep-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        .sitrep-table th, .sitrep-table td {
+            border: 1px solid #333;
+            padding: 12px;
+            text-align: left;
+        }
+        .sitrep-table th { background: #25292e; color: var(--accent); }
+
+        .highlight { color: var(--accent); font-weight: bold; }
+        .example { background: #000; padding: 10px; border-radius: 5px; font-family: monospace; color: #00ff00; }
+    </style>
+</head>
+<body>
+
+    <h1>⚔️ ENGAGEMENT & REPORTING SOP</h1>
+    <p>Panduan standar untuk bereaksi terhadap musuh, aturan menembak, dan pelaporan situasi tempur.</p>
+
+    <div class="section-container">
+        <h2>1. Rules of Engagement (ROE)</h2>
+        <p>ROE menentukan kapan personel diizinkan untuk melepas tembakan.</p>
+        <div class="roe-grid">
+            <div class="roe-card" style="background: #27ae60;">WEAPONS TIGHT<br><small>Hanya tembak jika ditembak duluan (Self Defense).</small></div>
+            <div class="roe-card" style="background: #f1c40f; color: black;">WEAPONS FREE<br><small>Tembak semua target yang teridentifikasi musuh.</small></div>
+            <div class="roe-card" style="background: #e67e22;">HOLD FIRE<br><small>Dilarang menembak dalam kondisi apapun (Stealth/Diplomasi).</small></div>
+        </div>
+    </div>
+
+    <div class="section-container">
+        <h2>2. Reaction to Contact (RTC)</h2>
+        <p>Saat regu menerima tembakan mendadak, lakukan prosedur <span class="highlight">R-T-R</span>:</p>
+        <div class="box">
+            <ol>
+                <li><strong>RETURN FIRE:</strong> Balas tembakan ke arah datangnya peluru untuk menekan musuh (Suppression).</li>
+                <li><strong>TAKE COVER:</strong> Cari perlindungan keras (batu/tembok) atau tiarap (prone) jika di area terbuka.</li>
+                <li><strong>RETURN ACCURATE FIRE:</strong> Setelah posisi aman, bidik dan eliminasi ancaman secara presisi.</li>
+            </ol>
+        </div>
+        <h3>The 3D's (Laporan Kontak Cepat)</h3>
+        <p>Siapapun yang melihat musuh duluan wajib teriak di radio/suara:</p>
+        <div class="example">
+            "CONTACT! [DIRECTION] - [DISTANCE] - [DESCRIPTION]" <br>
+            Contoh: "CONTACT! NORTH-WEST - 200 METERS - INFANTRY IN THE TREE LINE!"
+        </div>
+    </div>
+
+    <div class="section-container">
+        <h2>3. SITREP (Situation Report)</h2>
+        <p>Laporan berkala dari Squad Leader (SL) ke RTO/HQ menggunakan format <span class="highlight">S.A.L.U.T.E</span> untuk musuh dan <span class="highlight">A.C.E</span> untuk status regu.</p>
+        
+        <h3>A.C.E Report (Internal Squad)</h3>
+        <p>Dilakukan setelah kontak senjata selesai untuk mengecek kesiapan regu:</p>
+        <table class="sitrep-table">
+            <tr><th>Kategori</th><th>Penjelasan</th></tr>
+            <tr><td><strong>AMMO</strong></td><td>Status amunisi (Green/Yellow/Red).</td></tr>
+            <tr><td><strong>CASUALTY</strong></td><td>Jumlah personel luka atau gugur.</td></tr>
+            <tr><td><strong>EQUIPMENT</strong></td><td>Status alat penting (AT Launcher, Radio, Kendaraan).</td></tr>
+        </table>
+
+        <h3>S.A.L.U.T.E Report (Squad to HQ via RTO)</h3>
+        <div class="box">
+            <ul>
+                <li><strong>S - Size:</strong> Berapa banyak musuh? (E.g., 1 Squad)</li>
+                <li><strong>A - Activity:</strong> Apa yang mereka lakukan? (E.g., Patroli ke Timur)</li>
+                <li><strong>L - Location:</strong> Koordinat grid atau landmark. (E.g., Grid 045-062)</li>
+                <li><strong>U - Unit:</strong> Seragam/Afiliasi musuh. (E.g., Soviet Army)</li>
+                <li><strong>T - Time:</strong> Waktu kontak terjadi. (E.g., 14:00 Hours)</li>
+                <li><strong>E - Equipment:</strong> Senjata berat musuh? (E.g., BTR-70 detected)</li>
+            </ul>
+        </div>
+    </div>
+
+    <div style="text-align: center; opacity: 0.5; font-size: 0.8rem; margin-top: 50px;">
+        CONFIDENTIAL - FOR TRAINING USE ONLY
+    </div>
+
+</body>
+</html>

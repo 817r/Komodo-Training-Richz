@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        :root {
+            --bg: #0f1113;
+            --card-bg: #1a1d21;
+            --accent: #7a8d3e;
+            --text: #ccc;
+            --header-text: #ffffff;
+            --warning: #f39c12;
+            --danger: #c0392b;
+        }
+        body { 
+            background-color: var(--bg); 
+            color: var(--text); 
+            padding: 30px; 
+            font-family: 'Segoe UI', sans-serif;
+            line-height: 1.6;
+        }
+        h1, h2, h3 { color: var(--header-text); border-bottom: 1px solid var(--accent); padding-bottom: 10px; }
+        .section-container { margin-bottom: 40px; }
+        .box { background: var(--card-bg); border-left: 5px solid var(--accent); padding: 20px; border-radius: 4px; margin-bottom: 15px; }
+        .command-template { background: #000; padding: 15px; border-radius: 5px; font-family: monospace; color: #00ff00; margin: 10px 0; border: 1px dashed var(--accent); }
+        .highlight { color: var(--accent); font-weight: bold; }
+        .tag { font-size: 0.75rem; padding: 2px 8px; border-radius: 4px; font-weight: bold; text-transform: uppercase; margin-bottom: 5px; display: inline-block; }
+    </style>
+</head>
+<body>
+
+    <h1>🚩 SL TO SQUAD DIRECTIVES</h1>
+    <p>Gunakan template perintah di bawah ini untuk memberikan instruksi yang jelas, singkat, dan terstandarisasi kepada anggota regu.</p>
+
+    <div class="section-container">
+        <h2>1. Kontrol Pergerakan (Movement Order)</h2>
+        <div class="box">
+            <span class="tag" style="background: var(--accent); color: white;">Template: ADM (Action - Direction - Method)</span>
+            <p>Berikan perintah pergerakan dengan urutan: Apa yang dilakukan, Ke mana arahnya, dan Bagaimana formasinya.</p>
+            <div class="command-template">
+                "[SQUAD/TEAM], MOVE TO [LOCATION/HEADING], [SPEED]!"
+            </div>
+            <p><span class="highlight">Contoh:</span> "Alpha, move to North-West hill, Wedge formation, double time!"</p>
+        </div>
+    </div>
+
+    <div class="section-container">
+        <h2>2. Aturan Menembak (Engagement Order)</h2>
+        <div class="box">
+            <span class="tag" style="background: var(--danger); color: white;">Template: TAW (Target - Azimuth - Weapon)</span>
+            <p>Gunakan saat menentukan target prioritas untuk anggota spesialis (seperti AT atau Marksman).</p>
+            <div class="command-template">
+                "[NAME/ROLE], ENGAGE [TARGET] AT [BEARING/CLOCK-POSITION]!"
+            </div>
+            <p><span class="highlight">Contoh:</span> "Anti-Tank, engage BTR at 240 degrees, fire when ready!"</p>
+        </div>
+
+        <div class="box">
+            <span class="tag" style="background: var(--warning); color: black;">ROE Directive</span>
+            <p>Instruksi SL untuk mengubah status kesiagaan senjata regu:</p>
+            <ul>
+                <li><strong>"Weapons Tight!"</strong>: Tembak hanya jika ditembak duluan.</li>
+                <li><strong>"Weapons Free!"</strong>: Bebas tembak semua target musuh teridentifikasi.</li>
+                <li><strong>"Hold Fire!"</strong>: Berhenti menembak, jaga stealth.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section-container">
+        <h2>3. Tasking Spesialis (Role Specific)</h2>
+        <div class="box">
+            <span class="tag" style="background: #3498db; color: white;">Medical Directive</span>
+            <p>Perintah SL kepada Combat Medic untuk melakukan Triage atau evakuasi:</p>
+            <div class="command-template">
+                "MEDIC, STABILIZE [NAME] AT [COVER LOCATION], SQUAD PROVIDE SECURITY!"
+            </div>
+        </div>
+        <div class="box">
+            <span class="tag" style="background: #9b59b6; color: white;">Suppression Directive</span>
+            <p>Perintah kepada Automatic Rifleman untuk menekan posisi musuh:</p>
+            <div class="command-template">
+                "AUTO-RIFLEMAN, SUPPRESS [BUILDING/TREE LINE], TIM LAIN BOUNDING!"
+            </div>
+        </div>
+    </div>
+
+    <div class="section-container">
+        <h2>4. Permintaan Laporan (Information Request)</h2>
+        <p>SL memerintahkan anggota untuk memberikan data menggunakan format standar agar komunikasi radio tetap disiplin.</p>
+        <div class="box">
+            <span class="highlight">Perintah ACE Report:</span>
+            <div class="command-template">"ALL PERSONEL, GIVE ME ACE REPORT. OVER."</div>
+            <p>Anggota wajib menjawab sesuai urutan: <span class="highlight">Ammo - Casualty - Equipment</span>.</p>
+        </div>
+        <div class="box">
+            <span class="highlight">Perintah SALUTE Detail:</span>
+            <div class="command-template">"RTO, SEND SALUTE REPORT TO HQ BASED ON LATEST CONTACT."</div>
+            <p>Instruksi agar RTO menyusun laporan musuh (Size, Activity, Location, Unit, Time, Equipment) ke pusat komando.</p>
+        </div>
+    </div>
+
+    <div style="text-align: center; opacity: 0.5; font-size: 0.8rem; margin-top: 50px;">
+        &copy; 2026 Reforger Tactical Hub - SL Leadership SOP
+    </div>
+
+</body>
+</html>

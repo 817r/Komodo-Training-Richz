@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        :root {
+            --bg: #0f1113;
+            --card-bg: #1a1d21;
+            --accent: #7a8d3e;
+            --text: #ccc;
+            --header-text: #ffffff;
+            --medic: #e74c3c;
+            --lead: #f1c40f;
+            --comm: #3498db;
+        }
+        body { 
+            background-color: var(--bg); 
+            color: var(--text); 
+            padding: 30px; 
+            font-family: 'Segoe UI', sans-serif;
+            line-height: 1.6;
+        }
+        h1 { color: var(--header-text); border-bottom: 1px solid var(--accent); padding-bottom: 10px; }
+
+        /* --- Filter Styles --- */
+        .filter-container {
+            margin: 20px 0;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .filter-btn {
+            background: #25292e;
+            border: 1px solid #444;
+            color: white;
+            padding: 8px 16px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: 0.3s;
+            font-weight: bold;
+            font-size: 0.85rem;
+        }
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--accent);
+            border-color: var(--accent);
+        }
+
+        .role-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 20px; 
+            margin-top: 20px;
+        }
+
+        /* --- Role Card Styles --- */
+        .role-card { 
+            background: var(--card-bg); 
+            border: 1px solid #333; 
+            border-radius: 8px; 
+            overflow: hidden;
+            transition: transform 0.2s, opacity 0.3s;
+            display: block; /* Default visible */
+        }
+        .role-card.hidden { display: none; }
+        .role-card:hover { transform: translateY(-5px); border-color: var(--accent); }
+
+        .role-header { 
+            padding: 15px; 
+            background: #25292e; 
+            font-weight: bold; 
+            display: flex; 
+            justify-content: space-between;
+            align-items: center;
+        }
+        .role-body { padding: 20px; }
+        .role-icon { font-size: 1.5rem; }
+        
+        .tag { 
+            font-size: 0.7rem; 
+            padding: 2px 8px; 
+            border-radius: 10px; 
+            text-transform: uppercase; 
+            margin-bottom: 10px;
+            display: inline-block;
+        }
+        .tag-command { background: var(--lead); color: black; }
+        .tag-specialist { background: var(--medic); color: white; }
+        .tag-support { background: var(--accent); color: white; }
+        .tag-logistics { background: var(--comm); color: white; }
+
+        ul { padding-left: 20px; margin: 10px 0; }
+        li { margin-bottom: 5px; font-size: 0.9rem; }
+        .priority { color: var(--accent); font-weight: bold; font-size: 0.8rem; }
+    </style>
+</head>
+<body>
+
+    <h1>👥 SQUAD ROLES & RESPONSIBILITIES</h1>
+    <p>Gunakan filter di bawah untuk melihat spesifikasi peran berdasarkan kategori taktis.</p>
+
+    <div class="filter-container">
+        <button class="filter-btn active" onclick="filterRoles('all')">ALL ROLES</button>
+        <button class="filter-btn" onclick="filterRoles('command')">COMMAND & LEADERSHIP</button>
+        <button class="filter-btn" onclick="filterRoles('specialist')">SPECIALISTS</button>
+        <button class="filter-btn" onclick="filterRoles('support')">COMBAT SUPPORT</button>
+        <button class="filter-btn" onclick="filterRoles('logistics')">LOGISTICS</button>
+    </div>
+
+    <div class="role-grid" id="roleGrid">
+        
+        <div class="role-card" data-category="command">
+            <div class="role-header" style="border-bottom: 3px solid var(--lead);">
+                <span>Squad Leader (SL)</span>
+                <span class="role-icon">⭐</span>
+            </div>
+            <div class="role-body">
+                <span class="tag tag-command">Command</span>
+                <ul>
+                    <li>Menentukan navigasi dan objektif regu.</li>
+                    <li>Komunikasi ke HQ via Long Range Radio.</li>
+                    <li>Menandai peta (Marking) untuk intelijen.</li>
+                </ul>
+                <p class="priority">EQUIPMENT: Radio Backpack, Binoculars, Map.</p>
+            </div>
+        </div>
+
+        <div class="role-card" data-category="command">
+            <div class="role-header" style="border-bottom: 3px solid #9b59b6;">
+                <span>Second-in-Command (2IC)</span>
+                <span class="role-icon">🎖️</span>
+            </div>
+            <div class="role-body">
+                <span class="tag tag-command">Leadership</span>
+                <ul>
+                    <li><strong>Succession:</strong> Ambil alih komando jika SL gugur.</li>
+                    <li><strong>Cohesion:</strong> Menjaga barisan belakang regu.</li>
+                    <li><strong>Resource:</strong> Monitor amunisi dan stamina regu.</li>
+                </ul>
+                <p class="priority">SOP: Memimpin Fireteam Bravo atau elemen pendukung.</p>
+            </div>
+        </div>
+
+        <div class="role-card" data-category="command">
+            <div class="role-header" style="border-bottom: 3px solid var(--comm);">
+                <span>RTO</span>
+                <span class="role-icon">📡</span>
+            </div>
+            <div class="role-body">
+                <span class="tag tag-command">Communication</span>
+                <ul>
+                    <li>Hubungan komunikasi utama ke HQ/Platoon.</li>
+                    <li>Request bantuan udara (CAS) & Medevac.</li>
+                    <li>Memastikan keamanan sinyal radio.</li>
+                </ul>
+                <p class="priority">EQUIPMENT: Long Range Radio Backpack.</p>
+            </div>
+        </div>
+
+        <div class="role-card" data-category="specialist">
+            <div class="role-header" style="border-bottom: 3px solid var(--medic);">
+                <span>Combat Medic</span>
+                <span class="role-icon">🏥</span>
+            </div>
+            <div class="role-body">
+                <span class="tag tag-specialist">Medical</span>
+                <ul>
+                    <li><strong>Triage:</strong> Prioritaskan bantuan (SL No. 1).</li>
+                    <li><strong>Stabilization:</strong> Hentikan pendarahan & tensi.</li>
+                    <li><strong>Drag:</strong> Tarik rekan ke area aman.</li>
+                </ul>
+                <p class="priority">SOP: Pastikan area aman sebelum menolong.</p>
+            </div>
+        </div>
+
+        <div class="role-card" data-category="specialist">
+            <div class="role-header" style="border-bottom: 3px solid #555;">
+                <span>Anti-Tank Specialist</span>
+                <span class="role-icon">🚀</span>
+            </div>
+            <div class="role-body">
+                <span class="tag tag-specialist">Technical</span>
+                <ul>
+                    <li>Eliminasi kendaraan lapis baja musuh.</li>
+                    <li>Hancurkan gedung tinggi atau barikade.</li>
+                    <li>Waspada terhadap Backblast!</li>
+                </ul>
+                <p class="priority">EQUIPMENT: RPG-7 / LAW, Binoculars.</p>
+            </div>
+        </div>
+
+        <div class="role-card" data-category="specialist">
+            <div class="role-header" style="border-bottom: 3px solid #555;">
+                <span>Marksman</span>
+                <span class="role-icon">🎯</span>
+            </div>
+            <div class="role-body">
+                <span class="tag tag-specialist">Recon</span>
+                <ul>
+                    <li>Observasi jarak jauh dan scouting.</li>
+                    <li>Eliminasi target prioritas (Officer/MG).</li>
+                    <li>Informasi intelijen via radio.</li>
+                </ul>
+                <p class="priority">EQUIPMENT: Scoped Rifle, Rangefinder.</p>
+            </div>
+        </div>
+
+        <div class="role-card" data-category="support">
+            <div class="role-header" style="border-bottom: 3px solid var(--accent);">
+                <span>Automatic Rifleman</span>
+                <span class="role-icon">🔫</span>
+            </div>
+            <div class="role-body">
+                <span class="tag tag-support">Firepower</span>
+                <ul>
+                    <li>Memberikan tembakan penekanan (Suppression).</li>
+                    <li>Membuka jalan saat Assault.</li>
+                    <li>Base of Fire saat regu bermanuver.</li>
+                </ul>
+                <p class="priority">EQUIPMENT: LMG (M60/PKM), Extra Ammo.</p>
+            </div>
+        </div>
+
+        <div class="role-card" data-category="support">
+            <div class="role-header" style="border-bottom: 3px solid var(--accent);">
+                <span>Grenadier / Rifleman</span>
+                <span class="role-icon">💣</span>
+            </div>
+            <div class="role-body">
+                <span class="tag tag-support">Assault</span>
+                <ul>
+                    <li>Ujung tombak pertempuran jarak dekat.</li>
+                    <li>Penggunaan granat asap untuk perlindungan.</li>
+                    <li>Membawa amunisi cadangan untuk MG.</li>
+                </ul>
+                <p class="priority">EQUIPMENT: Underbarrel Launcher, Smoke/HE.</p>
+            </div>
+        </div>
+
+        <div class="role-card" data-category="support">
+            <div class="role-header" style="border-bottom: 3px solid #f39c12;">
+                <span>Ammo Bearer</span>
+                <span class="role-icon">📦</span>
+            </div>
+            <div class="role-body">
+                <span class="tag tag-support">Resupply</span>
+                <ul>
+                    <li>Battle Buddy bagi Automatic Rifleman.</li>
+                    <li>Membawa 4-6 box sabuk amunisi cadangan.</li>
+                    <li>Security saat MG sedang reload.</li>
+                </ul>
+                <p class="priority">EQUIPMENT: Rucksack besar penuh amunisi.</p>
+            </div>
+        </div>
+
+        <div class="role-card" data-category="logistics">
+            <div class="role-header" style="border-bottom: 3px solid var(--comm);">
+                <span>Logistics Specialist</span>
+                <span class="role-icon">🚛</span>
+            </div>
+            <div class="role-body">
+                <span class="tag tag-logistics">Infrastructure</span>
+                <ul>
+                    <li>Supply Chain dari HQ ke FOB.</li>
+                    <li>Membangun barikade.</li>
+                    <li>Maintenance kendaraan operasional.</li>
+                </ul>
+                <p class="priority">NOTE: Logistik adalah urat nadi pertempuran.</p>
+            </div>
+        </div>
+
+        <div class="role-card" data-category="logistics">
+            <div class="role-header" style="border-bottom: 3px solid var(--comm);">
+                <span>Combat Engineer Specialist</span>
+                <span class="role-icon">🚛</span>
+            </div>
+            <div class="role-body">
+                <span class="tag tag-logistics">REPAIR & FORTIFICATION</span>
+                <ul>
+                    <li>Pembuatan FOB dan Fortification.</li>
+                    <li>Membangun barikade dan pos radio.</li>
+                    <li>Maintenance kendaraan operasional dan combat.</li>
+                </ul>
+                <p class="priority">NOTE: Combat Engineers adalah penopang utama pertempuran.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function filterRoles(category) {
+            const cards = document.querySelectorAll('.role-card');
+            const btns = document.querySelectorAll('.filter-btn');
+
+            // Update Active Button
+            btns.forEach(btn => {
+                btn.classList.remove('active');
+                if(btn.innerText.toLowerCase().includes(category) || (category === 'all' && btn.innerText === 'ALL ROLES')) {
+                    btn.classList.add('active');
+                }
+            });
+
+            // Filter Cards
+            cards.forEach(card => {
+                if (category === 'all' || card.getAttribute('data-category') === category) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        :root {
+            --bg: #0f1113;
+            --card-bg: #1a1d21;
+            --accent: #7a8d3e;
+            --text: #ccc;
+            --header-text: #ffffff;
+            --alpha: #e67e22;
+            --bravo: #3498db;
+        }
+        body { 
+            background-color: var(--bg); 
+            color: var(--text); 
+            padding: 30px; 
+            font-family: 'Segoe UI', sans-serif;
+            line-height: 1.6;
+        }
+        h1, h2, h3 { color: var(--header-text); border-bottom: 1px solid var(--accent); padding-bottom: 10px; }
+        .section-container { margin-bottom: 40px; }
+        .box { background: var(--card-bg); border-left: 5px solid var(--accent); padding: 20px; border-radius: 4px; margin-bottom: 15px; }
+        
+        /* --- Numbering Table --- */
+        .org-table { width: 100%; border-collapse: collapse; margin: 20px 0; background: var(--card-bg); font-size: 0.9rem; }
+        .org-table th, .org-table td { padding: 12px; border: 1px solid #333; text-align: left; }
+        .org-table th { background: #25292e; color: var(--accent); }
+        .team-alpha { color: var(--alpha); font-weight: bold; }
+        .team-bravo { color: var(--bravo); font-weight: bold; }
+
+        .highlight { color: var(--accent); font-weight: bold; }
+        .tag { font-size: 0.7rem; padding: 2px 8px; border-radius: 10px; text-transform: uppercase; margin-right: 5px; }
+    </style>
+</head>
+<body>
+
+    <h1>🛡️ SQUAD ORGANIZATION & SECURITY</h1>
+    <p>Panduan penomoran anggota, pembagian tim kecil (Fire Team), dan prosedur pengamanan area.</p>
+
+    <div class="section-container">
+        <h2>1. Squad Numbering & Fire Teams</h2>
+        <p>Penomoran memudahkan SL untuk memanggil anggota secara cepat tanpa harus mengingat nama lengkap di tengah kontak senjata.</p>
+        <img src="img\squadFormation.jpg" alt="Squad Organization Chart" class="tactical-img">
+        <table class="org-table">
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>Role / Jabatan</th>
+                    <th>Fire Team</th>
+                    <th>Tugas Utama</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>1</strong></td>
+                    <td>Squad Leader (SL)</td>
+                    <td><span class="tag" style="background: #555;">HQ</span></td>
+                    <td>Komando Utama & Strategi</td>
+                </tr>
+                <tr>
+                    <td><strong>2</strong></td>
+                    <td>RTO / Medic</td>
+                    <td><span class="tag" style="background: #555;">HQ</span></td>
+                    <td>Komunikasi & Medis Regu</td>
+                </tr>
+                <tr style="border-top: 2px solid var(--alpha);">
+                    <td class="team-alpha">3</td>
+                    <td>Team Leader Alpha</td>
+                    <td class="team-alpha">ALPHA</td>
+                    <td>Maneuver Lead (Pointman)</td>
+                </tr>
+                <tr>
+                    <td class="team-alpha">4</td>
+                    <td>Automatic Rifleman</td>
+                    <td class="team-alpha">ALPHA</td>
+                    <td>Suppression Fire</td>
+                </tr>
+                <tr>
+                    <td class="team-alpha">5</td>
+                    <td>Grenadier / Rifleman</td>
+                    <td class="team-alpha">ALPHA</td>
+                    <td>Assault & CQB</td>
+                </tr>
+                <tr style="border-top: 2px solid var(--bravo);">
+                    <td class="team-bravo">6</td>
+                    <td>Team Leader Bravo (2IC)</td>
+                    <td class="team-bravo">BRAVO</td>
+                    <td>Wingman & Rear Security</td>
+                </tr>
+                <tr>
+                    <td class="team-bravo">7</td>
+                    <td>Automatic Rifleman</td>
+                    <td class="team-bravo">BRAVO</td>
+                    <td>Suppression Fire</td>
+                </tr>
+                <tr>
+                    <td class="team-bravo">8</td>
+                    <td>Anti-Tank Specialist</td>
+                    <td class="team-bravo">BRAVO</td>
+                    <td>Anti-Armor</td>
+                </tr>
+                <tr>
+                    <td class="team-bravo">9</td>
+                    <td>Marksman</td>
+                    <td class="team-bravo">BRAVO</td>
+                    <td>Long Range Recon</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="section-container">
+        <h2>2. Squad Security SOP</h2>
+        
+        <h3>A. 360° Security (Cigar/Star Formation)</h3>
+        <p>Saat regu berhenti sementara (Short Halt), setiap anggota wajib menjaga sektor pandangannya masing-masing:</p>
+        <div class="box">
+            <ul>
+                <li><strong>Nomor Ganjil:</strong> Menghadap ke arah Kiri (Sektor Jam 9 - Jam 11).</li>
+                <li><strong>Nomor Genap:</strong> Menghadap ke arah Kanan (Sektor Jam 1 - Jam 3).</li>
+                <li><strong>Pointman (#3):</strong> Menjaga sektor Depan (Jam 12).</li>
+                <li><strong>Rear Security (#6):</strong> Menjaga sektor Belakang (Jam 6).</li>
+            </ul>
+        </div>
+
+        <h3>B. Short Halt & Long Halt</h3>
+        <div class="box">
+            <p><span class="highlight">Short Halt (< 2 Menit):</span> Tetap berdiri/berlutut (Crouch). Senjata siap (Ready Low). Jangan buka peta.</p>
+            <p><span class="highlight">Long Halt (> 5 Menit):</span> Ambil posisi tiarap (Prone). Cari perlindungan keras. SL/RTO melakukan koordinasi dengan HQ.</p>
+        </div>
+    </div>
+
+    <div class="section-container">
+        <h2>3. Variasi Formasi Keamanan (Security Variants)</h2>
+        <p>Gunakan variasi formasi di bawah ini tergantung pada durasi pemberhentian dan tingkat ancaman di area operasi.</p>
+
+        <div class="box">
+            <span class="tag" style="background: #f39c12; color: black;">Herringbone (Keamanan Konvoi)</span>
+            <p>Digunakan saat kendaraan dalam konvoi melakukan pemberhentian mendadak di jalan raya atau jalur terbuka.</p>
+            <ul>
+                <li><strong>Posisi:</strong> Kendaraan berhenti secara zigzag untuk memaksimalkan sudut pandang ke samping.</li>
+                <li><strong>Dismount:</strong> Seluruh personel segera turun dari kendaraan dan mengambil posisi lindung di sekitar kendaraan.</li>
+                <li><strong>Sektor:</strong> Fokus pada pengamanan sektor kiri dan kanan jalan guna mencegah penyergapan (*Ambush*).</li>
+            </ul>
+        </div>
+
+        <div class="box">
+            <span class="tag" style="background: #27ae60; color: white;">Perimeter Defense / Harbor Site</span>
+            <p>Digunakan saat regu berhenti dalam waktu lama (>15 menit) untuk menyusun rencana serangan atau beristirahat.</p>
+            <ul>
+                <li><strong>Struktur:</strong> Setiap *Fire Team* (Alpha dan Bravo) bertanggung jawab menjaga 180 derajat perimeter.</li>
+                <li><strong>Posisi:</strong> Seluruh personel wajib dalam posisi tiarap (*Prone*) di balik perlindungan alami seperti vegetasi atau batu.</li>
+                <li><strong>Stealth:</strong> Jaga disiplin suara dan cahaya; gunakan status *Hold Fire* jika musuh tidak mendeteksi posisi regu.</li>
+            </ul>
+        </div>
+
+        <div class="box">
+            <span class="tag" style="background: #3498db; color: white;">Strongpoint (Urban Security)</span>
+            <p>Digunakan saat regu mengamankan gedung atau struktur di dalam area perkotaan (CQB).</p>
+            <ul>
+                <li><strong>Penempatan:</strong> *Automatic Rifleman* ditempatkan pada jendela atau pintu yang menghadap ke arah ancaman utama.</li>
+                <li><strong>Cross-Cover:</strong> Gunakan teknik saling menjaga pintu atau lorong yang berlawanan untuk mencegah musuh masuk tanpa terdeteksi.</li>
+                <li><strong>Safety:</strong> Hindari berdiri tepat di depan jendela (Fatal Funnel); ambil posisi sedikit ke dalam ruangan untuk menghindari deteksi musuh.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section-container">
+        <h2>4. Disiplin Keamanan (Security Discipline)</h2>
+        <div class="box" style="border-left-color: #e74c3c;">
+            <p>Keamanan bukan hanya soal posisi, tapi juga perilaku individu. Ikuti prinsip utama: <span class="highlight">"Jangan pernah semua orang melakukan hal yang sama di waktu yang bersamaan."</span></p>
+            <ul>
+                <li><strong>Scanning:</strong> Lakukan pengamatan sektor secara perlahan dari jarak dekat ke jarak jauh untuk mendeteksi musuh.</li>
+                <li><strong>Ammo Management:</strong> Saat *Long Halt*, lakukan pengisian amunisi secara bergantian agar selalu ada senjata yang siap menembak.</li>
+                <li><strong>Lapor Sebelum Bergerak:</strong> Jangan pernah meninggalkan sektor penjagaan tanpa izin dari Squad Leader atau Team Leader.</li>
+                <li><strong>Radio Silence:</strong> Gunakan radio hanya untuk informasi kritikal (KISS) agar suara transmisi tidak membocorkan posisi regu.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div style="text-align: center; opacity: 0.5; font-size: 0.8rem; margin-top: 50px;">
+        &copy; 2026 Reforger Tactical Hub - Squad Security SOP
+    </div>
+
+</body>
+</html>
