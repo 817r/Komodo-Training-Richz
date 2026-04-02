@@ -3,286 +3,318 @@
 <head>
     <meta charset="UTF-8">
     <style>
-        :root {
-            --bg: #0f1113;
-            --card-bg: #1a1d21;
-            --accent: #7a8d3e;
-            --text: #ccc;
-            --header-text: #ffffff;
-            --medic: #e74c3c;
-            --lead: #f1c40f;
-            --comm: #3498db;
-        }
-        body { 
-            background-color: var(--bg); 
-            color: var(--text); 
-            padding: 30px; 
-            font-family: 'Segoe UI', sans-serif;
-            line-height: 1.6;
-        }
-        h1 { color: var(--header-text); border-bottom: 1px solid var(--accent); padding-bottom: 10px; }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;700&display=swap');
 
-        /* --- Filter Styles --- */
+        :root {
+            --bg: #0a0b0c;
+            --card-bg: #111315;
+            --accent: #facc15;
+            --text: #a1a1aa;
+            --border: #2d3436;
+        }
+
+        body { 
+            background-color: var(--bg); color: var(--text); 
+            padding: 30px; font-family: 'Inter', sans-serif; line-height: 1.6;
+        }
+
+        h1 { color: #fff; font-weight: 800; font-size: 2rem; border-bottom: 2px solid var(--border); padding-bottom: 10px; margin-bottom: 10px; letter-spacing: -1px; }
+        .sub-header { font-family: 'JetBrains Mono'; color: var(--accent); font-size: 0.8rem; text-transform: uppercase; margin-bottom: 30px; letter-spacing: 2px; }
+
+        /* Filter Menu */
         .filter-container {
-            margin: 20px 0;
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
+            display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 30px;
         }
         .filter-btn {
-            background: #25292e;
-            border: 1px solid #444;
-            color: white;
-            padding: 8px 16px;
-            cursor: pointer;
-            border-radius: 4px;
-            transition: 0.3s;
-            font-weight: bold;
-            font-size: 0.85rem;
+            background: #050607; border: 1px solid #333; color: #a1a1aa;
+            padding: 8px 16px; border-radius: 4px; font-family: 'JetBrains Mono'; font-size: 0.75rem;
+            cursor: pointer; transition: all 0.2s ease; text-transform: uppercase;
         }
         .filter-btn:hover, .filter-btn.active {
-            background: var(--accent);
-            border-color: var(--accent);
+            background: rgba(250, 204, 21, 0.1); color: var(--accent); border-color: var(--accent);
+            box-shadow: 0 0 10px rgba(250, 204, 21, 0.2);
         }
 
         .role-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-            gap: 20px; 
-            margin-top: 20px;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; 
         }
 
-        /* --- Role Card Styles --- */
         .role-card { 
-            background: var(--card-bg); 
-            border: 1px solid #333; 
-            border-radius: 8px; 
-            overflow: hidden;
-            transition: transform 0.2s, opacity 0.3s;
-            display: block; /* Default visible */
+            background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; 
+            overflow: hidden; transition: all 0.3s ease; display: block;
         }
         .role-card.hidden { display: none; }
-        .role-card:hover { transform: translateY(-5px); border-color: var(--accent); }
+        .role-card:hover { transform: translateY(-4px); border-color: var(--accent); }
 
         .role-header { 
-            padding: 15px; 
-            background: #25292e; 
-            font-weight: bold; 
-            display: flex; 
-            justify-content: space-between;
-            align-items: center;
+            padding: 15px 20px; background: rgba(255,255,255,0.03); 
+            display: flex; justify-content: space-between; align-items: center;
         }
-        .role-body { padding: 20px; }
-        .role-icon { font-size: 1.5rem; }
+        .role-header span:first-child { font-weight: 800; color: #fff; font-size: 1.1rem; }
+        .role-icon { font-size: 1.2rem; }
+        
+        .role-body { padding: 20px; font-size: 0.9rem; }
         
         .tag { 
-            font-size: 0.7rem; 
-            padding: 2px 8px; 
-            border-radius: 10px; 
-            text-transform: uppercase; 
-            margin-bottom: 10px;
-            display: inline-block;
+            font-size: 0.65rem; padding: 3px 8px; border-radius: 4px; 
+            text-transform: uppercase; font-family: 'JetBrains Mono'; font-weight: bold; margin-bottom: 15px; display: inline-block;
         }
-        .tag-command { background: var(--lead); color: black; }
-        .tag-specialist { background: var(--medic); color: white; }
-        .tag-support { background: var(--accent); color: white; }
-        .tag-logistics { background: var(--comm); color: white; }
 
-        ul { padding-left: 20px; margin: 10px 0; }
-        li { margin-bottom: 5px; font-size: 0.9rem; }
-        .priority { color: var(--accent); font-weight: bold; font-size: 0.8rem; }
+        /* Category Colors */
+        .tag-cmd { background: rgba(241, 196, 15, 0.2); color: #f1c40f; border: 1px solid #f1c40f; }
+        .tag-spec { background: rgba(231, 76, 60, 0.2); color: #e74c3c; border: 1px solid #e74c3c; }
+        .tag-sup { background: rgba(52, 152, 219, 0.2); color: #3498db; border: 1px solid #3498db; }
+        .tag-logi { background: rgba(46, 204, 113, 0.2); color: #2ecc71; border: 1px solid #2ecc71; }
+        .tag-intel { background: rgba(155, 89, 182, 0.2); color: #9b59b6; border: 1px solid #9b59b6; }
+        .tag-arty { background: rgba(230, 126, 34, 0.2); color: #e67e22; border: 1px solid #e67e22; }
+
+        ul { padding-left: 15px; margin: 10px 0 20px 0; }
+        li { margin-bottom: 5px; color: #d1d5db; }
+        .priority { color: var(--accent); font-family: 'JetBrains Mono'; font-size: 0.75rem; background: #000; padding: 8px; border-radius: 4px; border-left: 2px solid var(--accent); }
     </style>
 </head>
 <body>
 
-    <h1>👥 SQUAD ROLES & RESPONSIBILITIES</h1>
-    <p>Gunakan filter di bawah untuk melihat spesifikasi peran berdasarkan kategori taktis.</p>
+    <h1>👥 INDIVIDUAL ROLES</h1>
+    <div class="sub-header">// Tactical Responsibilities</div>
 
     <div class="filter-container">
-        <button class="filter-btn active" onclick="filterRoles('all')">ALL ROLES</button>
-        <button class="filter-btn" onclick="filterRoles('command')">COMMAND & LEADERSHIP</button>
-        <button class="filter-btn" onclick="filterRoles('specialist')">SPECIALISTS</button>
-        <button class="filter-btn" onclick="filterRoles('support')">COMBAT SUPPORT</button>
-        <button class="filter-btn" onclick="filterRoles('logistics')">LOGISTICS</button>
+        <button class="filter-btn active" onclick="filterRoles('all')">All Roles</button>
+        <button class="filter-btn" onclick="filterRoles('command')">Command</button>
+        <button class="filter-btn" onclick="filterRoles('specialist')">Specialists</button>
+        <button class="filter-btn" onclick="filterRoles('support')">Combat Support</button>
+        <button class="filter-btn" onclick="filterRoles('intel')">Recon & Intel</button>
+        <button class="filter-btn" onclick="filterRoles('artillery')">Artillery</button>
+        <button class="filter-btn" onclick="filterRoles('logistics')">Logistics</button>
     </div>
 
     <div class="role-grid" id="roleGrid">
         
         <div class="role-card" data-category="command">
-            <div class="role-header" style="border-bottom: 3px solid var(--lead);">
-                <span>Squad Leader (SL)</span>
-                <span class="role-icon">⭐</span>
+            <div class="role-header" style="border-bottom: 2px solid #f1c40f;">
+                <span>Squad Leader (SL)</span> <span class="role-icon">⭐</span>
             </div>
             <div class="role-body">
-                <span class="tag tag-command">Command</span>
+                <span class="tag tag-cmd">Command</span>
                 <ul>
-                    <li>Menentukan navigasi dan objektif regu.</li>
+                    <li>Menentukan navigasi dan objektif regu Mondragon.</li>
                     <li>Komunikasi ke HQ via Long Range Radio.</li>
                     <li>Menandai peta (Marking) untuk intelijen.</li>
                 </ul>
-                <p class="priority">EQUIPMENT: Radio Backpack, Binoculars, Map.</p>
+                <div class="priority">EQ: Radio Backpack, Binoculars, Map.</div>
             </div>
         </div>
 
         <div class="role-card" data-category="command">
-            <div class="role-header" style="border-bottom: 3px solid #9b59b6;">
-                <span>Second-in-Command (2IC)</span>
-                <span class="role-icon">🎖️</span>
+            <div class="role-header" style="border-bottom: 2px solid #f1c40f;">
+                <span>Second-in-Command (2IC)</span> <span class="role-icon">🎖️</span>
             </div>
             <div class="role-body">
-                <span class="tag tag-command">Leadership</span>
+                <span class="tag tag-cmd">Leadership</span>
                 <ul>
-                    <li><strong>Succession:</strong> Ambil alih komando jika SL gugur.</li>
-                    <li><strong>Cohesion:</strong> Menjaga barisan belakang regu.</li>
-                    <li><strong>Resource:</strong> Monitor amunisi dan stamina regu.</li>
+                    <li>Mengambil alih komando penuh jika SL gugur.</li>
+                    <li>Menjaga barisan belakang (Rear Security).</li>
+                    <li>Monitor amunisi dan stamina anggota regu.</li>
                 </ul>
-                <p class="priority">SOP: Memimpin Fireteam Bravo atau elemen pendukung.</p>
+                <div class="priority">SOP: Memimpin elemen manuver (Fireteam).</div>
             </div>
         </div>
 
         <div class="role-card" data-category="command">
-            <div class="role-header" style="border-bottom: 3px solid var(--comm);">
-                <span>RTO</span>
-                <span class="role-icon">📡</span>
+            <div class="role-header" style="border-bottom: 2px solid #f1c40f;">
+                <span>Forward Observer (FO)</span> <span class="role-icon">📡</span>
             </div>
             <div class="role-body">
-                <span class="tag tag-command">Communication</span>
+                <span class="tag tag-cmd">Asset Control</span>
                 <ul>
-                    <li>Hubungan komunikasi utama ke HQ/Platoon.</li>
-                    <li>Request bantuan udara (CAS) & Medevac.</li>
-                    <li>Memastikan keamanan sinyal radio.</li>
+                    <li>Menghitung koordinat presisi target musuh.</li>
+                    <li>Meminta dan memandu serangan artileri/udara.</li>
+                    <li>Membatalkan tembakan jika terlalu dekat kawan (Danger Close).</li>
                 </ul>
-                <p class="priority">EQUIPMENT: Long Range Radio Backpack.</p>
+                <div class="priority">EQ: Vector Rangefinder, Laser Designator.</div>
             </div>
         </div>
 
         <div class="role-card" data-category="specialist">
-            <div class="role-header" style="border-bottom: 3px solid var(--medic);">
-                <span>Combat Medic</span>
-                <span class="role-icon">🏥</span>
+            <div class="role-header" style="border-bottom: 2px solid #e74c3c;">
+                <span>Combat Medic</span> <span class="role-icon">🏥</span>
             </div>
             <div class="role-body">
-                <span class="tag tag-specialist">Medical</span>
+                <span class="tag tag-spec">Medical</span>
                 <ul>
-                    <li><strong>Triage:</strong> Prioritaskan bantuan (SL No. 1).</li>
-                    <li><strong>Stabilization:</strong> Hentikan pendarahan & tensi.</li>
-                    <li><strong>Drag:</strong> Tarik rekan ke area aman.</li>
+                    <li>Melakukan Triage (menentukan prioritas pasien).</li>
+                    <li>Menghentikan pendarahan dan mengembalikan tensi darah (Saline).</li>
+                    <li>Menarik rekan (Drag/Carry) ke area aman sebelum ditolong.</li>
                 </ul>
-                <p class="priority">SOP: Pastikan area aman sebelum menolong.</p>
+                <div class="priority">SOP: Keselamatan Medic di atas segalanya.</div>
             </div>
         </div>
 
         <div class="role-card" data-category="specialist">
-            <div class="role-header" style="border-bottom: 3px solid #555;">
-                <span>Anti-Tank Specialist</span>
-                <span class="role-icon">🚀</span>
+            <div class="role-header" style="border-bottom: 2px solid #e74c3c;">
+                <span>Light Anti-Tank (LAT)</span> <span class="role-icon">🚀</span>
             </div>
             <div class="role-body">
-                <span class="tag tag-specialist">Technical</span>
+                <span class="tag tag-spec">Anti-Armor</span>
                 <ul>
-                    <li>Eliminasi kendaraan lapis baja musuh.</li>
-                    <li>Hancurkan gedung tinggi atau barikade.</li>
-                    <li>Waspada terhadap Backblast!</li>
+                    <li>Eliminasi kendaraan lapis baja ringan (BTR, APC).</li>
+                    <li>Menghancurkan gedung yang diduduki musuh.</li>
+                    <li>Selalu peringatkan kawan dari *Backblast* sebelum menembak.</li>
                 </ul>
-                <p class="priority">EQUIPMENT: RPG-7 / LAW, Binoculars.</p>
+                <div class="priority">EQ: Disposable Launcher (LAW, RPG-26).</div>
             </div>
         </div>
 
         <div class="role-card" data-category="specialist">
-            <div class="role-header" style="border-bottom: 3px solid #555;">
-                <span>Marksman</span>
-                <span class="role-icon">🎯</span>
+            <div class="role-header" style="border-bottom: 2px solid #e74c3c;">
+                <span>Heavy Anti-Tank (HAT)</span> <span class="role-icon">💥</span>
             </div>
             <div class="role-body">
-                <span class="tag tag-specialist">Recon</span>
+                <span class="tag tag-spec">Armor Annihilation</span>
                 <ul>
-                    <li>Observasi jarak jauh dan scouting.</li>
-                    <li>Eliminasi target prioritas (Officer/MG).</li>
-                    <li>Informasi intelijen via radio.</li>
+                    <li>Menghancurkan Main Battle Tank (MBT).</li>
+                    <li>Menembak dari jarak jauh menggunakan misil berpemandu.</li>
+                    <li>Membutuhkan Asisten untuk memuat ulang roket.</li>
                 </ul>
-                <p class="priority">EQUIPMENT: Scoped Rifle, Rangefinder.</p>
+                <div class="priority">EQ: Javelin, Kornet, atau Carl Gustaf.</div>
+            </div>
+        </div>
+
+        <div class="role-card" data-category="intel">
+            <div class="role-header" style="border-bottom: 2px solid #9b59b6;">
+                <span>Recon Scout</span> <span class="role-icon">👁️</span>
+            </div>
+            <div class="role-body">
+                <span class="tag tag-intel">Infiltration</span>
+                <ul>
+                    <li>Membuka jalur aman untuk Peleton Utama.</li>
+                    <li>Mengumpulkan intelijen musuh tanpa terdeteksi.</li>
+                    <li>Penyergapan senyap.</li>
+                </ul>
+                <div class="priority">EQ: Silenced Weapon, Ghillie Suit, Binoc.</div>
+            </div>
+        </div>
+
+        <div class="role-card" data-category="intel">
+            <div class="role-header" style="border-bottom: 2px solid #9b59b6;">
+                <span>Sniper</span> <span class="role-icon">🎯</span>
+            </div>
+            <div class="role-body">
+                <span class="tag tag-intel">Precision Lethality</span>
+                <ul>
+                    <li>Eliminasi HVT (Perwira musuh, Sniper musuh, Gunner statis).</li>
+                    <li>Bekerja berdasarkan kalkulasi dari Spotter.</li>
+                    <li>Memberikan perlindungan *Overwatch* untuk regu infanteri.</li>
+                </ul>
+                <div class="priority">EQ: Bolt-Action/Semi-Auto Sniper Rifle.</div>
+            </div>
+        </div>
+
+        <div class="role-card" data-category="intel">
+            <div class="role-header" style="border-bottom: 2px solid #9b59b6;">
+                <span>Spotter</span> <span class="role-icon">🔭</span>
+            </div>
+            <div class="role-body">
+                <span class="tag tag-intel">Target Calculation</span>
+                <ul>
+                    <li>Mencari dan mengidentifikasi target untuk Sniper.</li>
+                    <li>Menghitung jarak, arah angin (*windage*), dan elevasi.</li>
+                    <li>Melindungi posisi Sniper dari jarak dekat (CQB Security).</li>
+                </ul>
+                <div class="priority">EQ: Rangefinder, Spotting Scope, Assault Rifle.</div>
             </div>
         </div>
 
         <div class="role-card" data-category="support">
-            <div class="role-header" style="border-bottom: 3px solid var(--accent);">
-                <span>Automatic Rifleman</span>
-                <span class="role-icon">🔫</span>
+            <div class="role-header" style="border-bottom: 2px solid #3498db;">
+                <span>Automatic Rifleman (MG)</span> <span class="role-icon">🔫</span>
             </div>
             <div class="role-body">
-                <span class="tag tag-support">Firepower</span>
+                <span class="tag tag-sup">Firepower</span>
                 <ul>
-                    <li>Memberikan tembakan penekanan (Suppression).</li>
-                    <li>Membuka jalan saat Assault.</li>
-                    <li>Base of Fire saat regu bermanuver.</li>
+                    <li>Memberikan tembakan *Suppression* yang akurat.</li>
+                    <li>Memegang kendali pertempuran (*Base of Fire*).</li>
+                    <li>Menghemat stamina agar siap posisi *bipod* kapan saja.</li>
                 </ul>
-                <p class="priority">EQUIPMENT: LMG (M60/PKM), Extra Ammo.</p>
+                <div class="priority">EQ: Light/Medium Machine Gun.</div>
             </div>
         </div>
 
         <div class="role-card" data-category="support">
-            <div class="role-header" style="border-bottom: 3px solid var(--accent);">
-                <span>Grenadier / Rifleman</span>
-                <span class="role-icon">💣</span>
+            <div class="role-header" style="border-bottom: 2px solid #3498db;">
+                <span>Ammo Bearer</span> <span class="role-icon">📦</span>
             </div>
             <div class="role-body">
-                <span class="tag tag-support">Assault</span>
+                <span class="tag tag-sup">Resupply</span>
+                <ul>
+                    <li>Bertindak sebagai *Battle Buddy* bagi Machine Gunner/HAT.</li>
+                    <li>Membawa suplai amunisi berat yang tidak bisa dibawa penembak.</li>
+                    <li>Siap mengambil alih senjata utama jika Gunner gugur.</li>
+                </ul>
+                <div class="priority">EQ: Heavy Backpack, Extra Ammo/Rockets.</div>
+            </div>
+        </div>
+
+        <div class="role-card" data-category="support">
+            <div class="role-header" style="border-bottom: 2px solid #3498db;">
+                <span>Grenadier / Rifleman</span> <span class="role-icon">💣</span>
+            </div>
+            <div class="role-body">
+                <span class="tag tag-sup">Assault</span>
                 <ul>
                     <li>Ujung tombak pertempuran jarak dekat.</li>
-                    <li>Penggunaan granat asap untuk perlindungan.</li>
-                    <li>Membawa amunisi cadangan untuk MG.</li>
+                    <li>Menggunakan granat asap untuk penyamaran regu.</li>
+                    <li>Membuka rute mati menggunakan pelontar granat (HE).</li>
                 </ul>
-                <p class="priority">EQUIPMENT: Underbarrel Launcher, Smoke/HE.</p>
+                <div class="priority">EQ: Underbarrel Launcher (UGL), Smoke.</div>
             </div>
         </div>
 
-        <div class="role-card" data-category="support">
-            <div class="role-header" style="border-bottom: 3px solid #f39c12;">
-                <span>Ammo Bearer</span>
-                <span class="role-icon">📦</span>
+        <div class="role-card" data-category="artillery">
+            <div class="role-header" style="border-bottom: 2px solid #e67e22;">
+                <span>Mortar Gunner</span> <span class="role-icon">💣</span>
             </div>
             <div class="role-body">
-                <span class="tag tag-support">Resupply</span>
+                <span class="tag tag-arty">Indirect Fire</span>
                 <ul>
-                    <li>Battle Buddy bagi Automatic Rifleman.</li>
-                    <li>Membawa 4-6 box sabuk amunisi cadangan.</li>
-                    <li>Security saat MG sedang reload.</li>
+                    <li>Mengeset elevasi dan azimuth tabung mortir.</li>
+                    <li>Menembakkan proyektil High Explosive atau Smoke.</li>
+                    <li>Berkomunikasi secara terus menerus dengan FO untuk koreksi tembakan.</li>
                 </ul>
-                <p class="priority">EQUIPMENT: Rucksack besar penuh amunisi.</p>
-            </div>
-        </div>
-
-        <div class="role-card" data-category="logistics">
-            <div class="role-header" style="border-bottom: 3px solid var(--comm);">
-                <span>Logistics Specialist</span>
-                <span class="role-icon">🚛</span>
-            </div>
-            <div class="role-body">
-                <span class="tag tag-logistics">Infrastructure</span>
-                <ul>
-                    <li>Supply Chain dari HQ ke FOB.</li>
-                    <li>Membangun barikade.</li>
-                    <li>Maintenance kendaraan operasional.</li>
-                </ul>
-                <p class="priority">NOTE: Logistik adalah urat nadi pertempuran.</p>
+                <div class="priority">SOP: Wajib paham kalkulasi artileri dasar.</div>
             </div>
         </div>
 
         <div class="role-card" data-category="logistics">
-            <div class="role-header" style="border-bottom: 3px solid var(--comm);">
-                <span>Combat Engineer Specialist</span>
-                <span class="role-icon">🚛</span>
+            <div class="role-header" style="border-bottom: 2px solid #2ecc71;">
+                <span>Combat Engineer</span> <span class="role-icon">🛠️</span>
             </div>
             <div class="role-body">
-                <span class="tag tag-logistics">REPAIR & FORTIFICATION</span>
+                <span class="tag tag-logi">Infrastructure</span>
                 <ul>
-                    <li>Pembuatan FOB dan Fortification.</li>
-                    <li>Membangun barikade dan pos radio.</li>
-                    <li>Maintenance kendaraan operasional dan combat.</li>
+                    <li>Membangun Forward Operating Base (FOB).</li>
+                    <li>Membangun benteng pertahanan (HESCO, Sandbags).</li>
+                    <li>Mendeteksi dan menjinakkan ranjau (EOD).</li>
                 </ul>
-                <p class="priority">NOTE: Combat Engineers adalah penopang utama pertempuran.</p>
+                <div class="priority">EQ: Entrenching Tool, Mine Detector.</div>
             </div>
         </div>
+
+        <div class="role-card" data-category="logistics">
+            <div class="role-header" style="border-bottom: 2px solid #2ecc71;">
+                <span>Logistics Driver</span> <span class="role-icon">🚛</span>
+            </div>
+            <div class="role-body">
+                <span class="tag tag-logi">Supply Chain</span>
+                <ul>
+                    <li>Mengemudikan truk pasokan dari Main Base ke Frontline.</li>
+                    <li>Mengelola *Supply Points* agar regu bisa *respawn/rearm*.</li>
+                    <li>Melakukan perbaikan darurat pada kendaraan tempur.</li>
+                </ul>
+                <div class="priority">SOP: Menghindari rute utama yang berpotensi *ambush*.</div>
+            </div>
+        </div>
+
     </div>
 
     <script>
@@ -290,15 +322,13 @@
             const cards = document.querySelectorAll('.role-card');
             const btns = document.querySelectorAll('.filter-btn');
 
-            // Update Active Button
             btns.forEach(btn => {
                 btn.classList.remove('active');
-                if(btn.innerText.toLowerCase().includes(category) || (category === 'all' && btn.innerText === 'ALL ROLES')) {
+                if(btn.innerText.toLowerCase().includes(category) || (category === 'all' && btn.innerText === 'All Roles')) {
                     btn.classList.add('active');
                 }
             });
 
-            // Filter Cards
             cards.forEach(card => {
                 if (category === 'all' || card.getAttribute('data-category') === category) {
                     card.classList.remove('hidden');

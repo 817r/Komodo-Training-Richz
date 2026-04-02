@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        :root {
+            --bg: #0f1113;
+            --card-bg: #1a1d21;
+            --accent: #7a8d3e;
+            --text: #ccc;
+            --header-text: #ffffff;
+            --danger: #c0392b;
+            --warning: #f39c12;
+            --vehicle: #3498db;
+        }
+        body { 
+            background-color: var(--bg); 
+            color: var(--text); 
+            padding: 30px; 
+            font-family: 'Segoe UI', sans-serif;
+            line-height: 1.6;
+        }
+        h1, h2, h3 { color: var(--header-text); border-bottom: 1px solid var(--accent); padding-bottom: 10px; }
+        
+        .section-container { margin-bottom: 40px; }
+        
+        .box {
+            background: var(--card-bg);
+            border-left: 5px solid var(--accent);
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .tag { font-size: 0.75rem; padding: 2px 8px; border-radius: 4px; font-weight: bold; text-transform: uppercase; margin-bottom: 5px; display: inline-block; }
+        .highlight { color: var(--accent); font-weight: bold; }
+        .command-template { background: #000; padding: 15px; border-radius: 5px; font-family: monospace; color: #00ff00; margin: 10px 0; border: 1px dashed var(--accent); }
+    </style>
+</head>
+<body>
+
+    <h1>🚜 MECHANIZED & COMBINED ARMS</h1>
+    <p>Panduan taktis integrasi antara unit Infanteri dan Kendaraan Lapis Baja (APC/IFV) untuk memaksimalkan daya tembak, mobilitas, dan perlindungan (Combined Arms).</p>
+
+    <div class="section-container">
+        <h2>1. Prinsip Operasi Gabungan</h2>
+        <div class="box">
+            <p>Kunci dari <i>Combined Arms</i> adalah sinergi. Kendaraan dan infanteri saling menutupi kelemahan masing-masing:</p>
+            <ul>
+                <li><span class="highlight">Peran Kendaraan:</span> Memberikan tembakan bantuan berat (Heavy Suppression), mobilitas jarak jauh, dan perlindungan anti-peluru bagi regu.</li>
+                <li><span class="highlight">Peran Infanteri:</span> Menjadi "mata dan telinga" kendaraan. Melindungi kendaraan dari ancaman ranjau, ranjau anti-tank (AT), dan menyapu bangunan/area tertutup (CQB).</li>
+            </ul>
+        </div>
+    </div>
+
+    
+    <div class="section-container">
+        <h2>2. Formasi Pergerakan (Movement Profiles)</h2>
+        <div class="grid-2">
+            <div class="box" style="border-left-color: var(--warning);">
+                <span class="tag" style="background: var(--warning); color: black;">Infantry Leading (Hutan/Urban)</span>
+                <h3>🚶 Infanteri di Depan</h3>
+                <p>Digunakan saat jarak pandang terbatas (hutan lebat atau kota). Kendaraan sangat rentan terhadap serangan AT jarak dekat. Infanteri bergerak 20-50 meter di depan kendaraan untuk <i>clearing</i> area, sementara kendaraan mengikuti dari belakang sebagai <i>overwatch</i>.</p>
+            </div>
+            <div class="box" style="border-left-color: var(--vehicle);">
+                <span class="tag" style="background: var(--vehicle); color: white;">Vehicle Leading (Area Terbuka)</span>
+                <h3>🚙 Kendaraan di Depan</h3>
+                <p>Digunakan di medan terbuka (Open Field). Kendaraan memimpin untuk menyerap potensi tembakan musuh menggunakan lapis bajanya. Infanteri mengikuti di belakang kendaraan (menggunakan lambung kendaraan sebagai <i>moving cover</i>) atau tetap berada di dalam kabin.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-container">
+        <h2>3. Prosedur Dismount (Turun Kendaraan)</h2>
+        <p>Prosedur ketika regu harus keluar dari APC/IFV untuk memulai pertempuran darat.</p>
+        <div class="box" style="border-left-color: var(--danger);">
+            <h3>🔥 Contact Dismount (Turun Saat Diserang)</h3>
+            <p>Jika kendaraan disergap (Ambush) saat regu masih di dalam:</p>
+            <ol>
+                <li>Kendaraan segera bermanuver mencari perlindungan atau memutar lambung terkuatnya ke arah musuh.</li>
+                <li>Komandan Regu (SL) meneriakkan perintah <strong>"DISMOUNT, DISMOUNT!"</strong>.</li>
+                <li>Infanteri keluar melalui pintu belakang/samping dan SEGERA berkumpul di area <i>Blind Side</i> (sisi kendaraan yang terlindung dari tembakan musuh).</li>
+                <li>Gunakan asap (Smoke Grenade) untuk menutupi proses turun jika area sangat terbuka.</li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="section-container">
+        <h2>4. Komunikasi SL ke Kendaraan (Intercom/Radio)</h2>
+        <p>Gunakan frekuensi Support (standar 50.0 MHz) atau Local Voice untuk memandu kru kendaraan (Driver/Gunner).</p>
+        
+        <div class="box">
+            <span class="tag" style="background: var(--accent); color: white;">Target Designation</span>
+            <p>Mengarahkan Gunner kendaraan ke target yang dilihat infanteri:</p>
+            <div class="command-template">
+                "[CALLSIGN KENDARAAN], INI [CALLSIGN SQUAD], TARGET [TIPE MUSUH], BEARING [ANGKA/ARAH DARI KENDARAAN]!"
+            </div>
+            <p><span class="highlight">Contoh:</span> "Ares 1, ini Hitman 1, Target AT Infantry di gedung merah, bearing 1-2-0 dari posisimu, suppress!"</p>
+        </div>
+    </div>
+
+    <div style="text-align: center; opacity: 0.5; font-size: 0.8rem; margin-top: 50px;">
+        &copy; 2026 Reforger Tactical Hub - Mechanized Infantry SOP
+    </div>
+
+</body>
+</html>

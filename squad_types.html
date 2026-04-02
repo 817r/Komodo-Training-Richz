@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;700&display=swap');
+
+        :root {
+            --bg: #0a0b0c;
+            --card-bg: #111315;
+            --accent: #facc15;
+            --text: #a1a1aa;
+            
+            /* Class Colors */
+            --rifle: #3498db;     /* Blue */
+            --weapon: #e74c3c;    /* Red */
+            --logistics: #2ecc71; /* Green */
+            --anti-tank: #e67e22; /* Orange */
+            --recon: #9b59b6;     /* Purple */
+            --arty: #f1c40f;      /* Yellow */
+            --sf: #34495e;        /* Dark Blue/Gray */
+            --sniper: #000000;    /* Black */
+        }
+
+        body { 
+            background-color: var(--bg); color: var(--text); 
+            padding: 30px; font-family: 'Inter', sans-serif; line-height: 1.6;
+        }
+
+        h1 { color: #fff; font-weight: 800; font-size: 2rem; border-bottom: 2px solid var(--border); padding-bottom: 10px; margin-bottom: 10px; letter-spacing: -1px; }
+        .sub-header { font-family: 'JetBrains Mono'; color: var(--accent); font-size: 0.8rem; text-transform: uppercase; margin-bottom: 40px; letter-spacing: 2px; }
+        
+        h2 { color: #fff; font-weight: 800; font-size: 1.3rem; margin-bottom: 5px; display: flex; align-items: center; gap: 10px; }
+
+        .type-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 25px;
+        }
+
+        .squad-card {
+            background: var(--card-bg);
+            border: 1px solid #2d3436;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .squad-card:hover { transform: translateY(-5px); border-color: var(--accent); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+
+        .card-header { padding: 20px; background: linear-gradient(90deg, rgba(255,255,255,0.03) 0%, transparent 100%); }
+        .card-body { padding: 20px; font-size: 0.9rem; }
+
+        .composition-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+
+        .role-slot {
+            background: #050607; border: 1px solid #333; padding: 8px 10px;
+            border-radius: 4px; font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem; color: #d1d5db;
+        }
+
+        .task-list { padding-left: 15px; margin-top: 10px; }
+        .task-list li { margin-bottom: 8px; color: #d1d5db; }
+        .task-list li strong { color: #fff; }
+        .title-tag { font-family: 'JetBrains Mono'; font-size: 0.7rem; text-transform: uppercase; font-weight: bold; }
+
+    </style>
+</head>
+<body>
+
+    <h1>🎖️ MONDRAGON TASK FORCES</h1>
+    <div class="sub-header">// Squad Types & Specialized Elements</div>
+    
+    <div class="type-container">
+        
+        <div class="squad-card">
+            <div class="card-header" style="border-left: 5px solid var(--rifle);">
+                <h2>Rifle Squad</h2>
+                <div class="title-tag" style="color: var(--rifle);">Primary Assault Element</div>
+            </div>
+            <div class="card-body">
+                <p>Tulang punggung infanteri Mondragon. Bertugas merebut wilayah, bermanuver, dan melakukan pembersihan bangunan (CQB).</p>
+                <div class="composition-grid">
+                    <div class="role-slot">1x Squad Leader</div>
+                    <div class="role-slot">1x Combat Medic</div>
+                    <div class="role-slot">2x Team Leader</div>
+                    <div class="role-slot">2x Auto-Rifleman</div>
+                    <div class="role-slot">2x Grenadier/LAT</div>
+                </div>
+                <ul class="task-list">
+                    <li><strong>Maneuver:</strong> Menyusup & Bounding Overwatch.</li>
+                    <li><strong>Assault:</strong> Membersihkan parit dan bangunan.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="squad-card">
+            <div class="card-header" style="border-left: 5px solid var(--weapon);">
+                <h2>Weapons Squad</h2>
+                <div class="title-tag" style="color: var(--weapon);">Heavy Base of Fire</div>
+            </div>
+            <div class="card-body">
+                <p>Dilengkapi Machine Gun kaliber sedang/berat. Bergerak lebih lambat, mengandalkan posisi statis untuk memberikan perlindungan jarak jauh.</p>
+                <div class="composition-grid">
+                    <div class="role-slot">1x Squad Leader</div>
+                    <div class="role-slot">2x Machine Gunner</div>
+                    <div class="role-slot">2x Ammo Bearer</div>
+                    <div class="role-slot">1x Medic</div>
+                </div>
+                <ul class="task-list">
+                    <li><strong>Suppression:</strong> Tembakan penekan volume tinggi.</li>
+                    <li><strong>Overwatch:</strong> Mengawasi pergerakan Rifle Squad dari dataran tinggi.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="squad-card">
+            <div class="card-header" style="border-left: 5px solid var(--anti-tank);">
+                <h2>Light Anti-Tank (LAT)</h2>
+                <div class="title-tag" style="color: var(--anti-tank);">Mobile Armor Defense</div>
+            </div>
+            <div class="card-body">
+                <p>Tim AT ringan yang menempel pada regu infanteri. Menggunakan launcher sekali pakai (LAW/RPG-26) untuk bereaksi cepat terhadap APC/BTR.</p>
+                <div class="composition-grid">
+                    <div class="role-slot">1x LAT Gunner</div>
+                    <div class="role-slot">1x Rifleman (Security)</div>
+                </div>
+                <ul class="task-list">
+                    <li><strong>Quick Reaction:</strong> Menyergap light armor musuh.</li>
+                    <li><strong>Bunker Busting:</strong> Menghancurkan posisi musuh di dalam gedung.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="squad-card">
+            <div class="card-header" style="border-left: 5px solid #d35400;">
+                <h2>Heavy Anti-Tank (HAT)</h2>
+                <div class="title-tag" style="color: #d35400);">Static Armor Annihilation</div>
+            </div>
+            <div class="card-body">
+                <p>Tim senjata berat berpandu (TOW/Kornet/Javelin). Beroperasi statis di jarak jauh untuk menetralisir Main Battle Tank (MBT) musuh.</p>
+                <div class="composition-grid">
+                    <div class="role-slot">1x HAT Gunner</div>
+                    <div class="role-slot">1x Assistant (Ammo/Optic)</div>
+                    <div class="role-slot">1x Security/Driver</div>
+                </div>
+                <ul class="task-list">
+                    <li><strong>Armor Denial:</strong> Menutup akses jalan utama dari tank musuh.</li>
+                    <li><strong>Setup:</strong> Membutuhkan waktu untuk *deploy* senjata.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="squad-card">
+            <div class="card-header" style="border-left: 5px solid var(--logistics);">
+                <h2>Logistics & Supply</h2>
+                <div class="title-tag" style="color: var(--logistics);">Combat Sustenance</div>
+            </div>
+            <div class="card-body">
+                <p>Urat nadi operasi Mondragon. Bertanggung jawab atas suplai amunisi, pembangunan FOB, dan perbaikan kendaraan di garis depan.</p>
+                <div class="composition-grid">
+                    <div class="role-slot">1x Logi Leader</div>
+                    <div class="role-slot">2x Combat Engineer</div>
+                    <div class="role-slot">2x Supply Driver</div>
+                </div>
+                <ul class="task-list">
+                    <li><strong>FOB Creation:</strong> Membangun titik respawn dan barikade.</li>
+                    <li><strong>Resupply:</strong> Mengirim amunisi/medis menggunakan truk suplai.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="squad-card">
+            <div class="card-header" style="border-left: 5px solid var(--recon);">
+                <h2>Reconnaissance</h2>
+                <div class="title-tag" style="color: var(--recon);">Deep Infiltration & Intel</div>
+            </div>
+            <div class="card-body">
+                <p>Mata dan telinga komando. Menyusup ke belakang garis musuh secara diam-diam untuk memetakan pertahanan dan pergerakan musuh tanpa memicu kontak.</p>
+                <div class="composition-grid">
+                    <div class="role-slot">1x Recon Leader</div>
+                    <div class="role-slot">2x Scout (Silenced)</div>
+                    <div class="role-slot">1x RTO / Drone Op</div>
+                </div>
+                <ul class="task-list">
+                    <li><strong>Hold Fire:</strong> Pantang menembak kecuali sangat terdesak.</li>
+                    <li><strong>Intelligence:</strong> Melaporkan koordinat grid musuh ke HQ.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="squad-card">
+            <div class="card-header" style="border-left: 5px solid var(--arty);">
+                <h2>Mortar Section</h2>
+                <div class="title-tag" style="color: var(--arty);">Indirect Fire Support</div>
+            </div>
+            <div class="card-body">
+                <p>Memberikan bantuan tembakan tidak langsung (HE atau Smoke) dari jarak aman. Membutuhkan koordinat presisi dari FO atau Recon.</p>
+                <div class="composition-grid">
+                    <div class="role-slot">1x Fire Direction (FDC)</div>
+                    <div class="role-slot">2x Mortar Gunner</div>
+                    <div class="role-slot">2x Ammo Loader</div>
+                </div>
+                <ul class="task-list">
+                    <li><strong>Fire Missions:</strong> Mengeksekusi permintaan tembakan artileri.</li>
+                    <li><strong>Concealment:</strong> Menyebarkan tabir asap masif untuk infanteri.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="squad-card">
+            <div class="card-header" style="border-left: 5px solid #bdc3c7;">
+                <h2>Forward Observer (FO/JTAC)</h2>
+                <div class="title-tag" style="color: #bdc3c7;">Asset Controller</div>
+            </div>
+            <div class="card-body">
+                <p>Spesialis yang melekat pada Rifle Squad atau HQ. Bertugas memandu serangan udara (CAS) dan artileri ke sasaran yang akurat.</p>
+                <div class="composition-grid">
+                    <div class="role-slot">1x Forward Observer</div>
+                    <div class="role-slot">1x RTO (Long Range)</div>
+                </div>
+                <ul class="task-list">
+                    <li><strong>Targeting:</strong> Mengirim 9-Line Brief atau koordinat grid.</li>
+                    <li><strong>Coordination:</strong> Memastikan tidak ada *Friendly Fire* (Blue-on-Blue).</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="squad-card">
+            <div class="card-header" style="border-left: 5px solid var(--sniper); background: linear-gradient(90deg, rgba(255,255,255,0.1) 0%, transparent 100%);">
+                <h2>Sniper Team</h2>
+                <div class="title-tag" style="color: #fff;">Precision Elimination</div>
+            </div>
+            <div class="card-body">
+                <p>Tim kecil beranggotakan dua orang. Fokus pada eliminasi Target Bernilai Tinggi (High Value Target) seperti Perwira, Gunner, atau Sniper musuh.</p>
+                <div class="composition-grid">
+                    <div class="role-slot">1x Sniper (High Caliber)</div>
+                    <div class="role-slot">1x Spotter (Rangefinder)</div>
+                </div>
+                <ul class="task-list">
+                    <li><strong>Precision:</strong> Menghitung elevasi dan *windage* sebelum menembak.</li>
+                    <li><strong>Overwatch:</strong> Mengawasi rute pendekatan musuh.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="squad-card">
+            <div class="card-header" style="border-left: 5px solid var(--sf);">
+                <h2>Special Forces (Direct Action)</h2>
+                <div class="title-tag" style="color: var(--sf);">Elite Strike Team</div>
+            </div>
+            <div class="card-body">
+                <p>Pasukan elite untuk operasi khusus berisiko tinggi. Terdiri dari veteran yang mampu beroperasi mandiri tanpa dukungan logistik yang intensif.</p>
+                <div class="composition-grid">
+                    <div class="role-slot">1x SF Operator Lead</div>
+                    <div class="role-slot">3x Assault Specialist</div>
+                    <div class="role-slot">1x Combat Trauma Medic</div>
+                </div>
+                <ul class="task-list">
+                    <li><strong>Sabotage:</strong> Menghancurkan radar, artileri, atau suplai musuh.</li>
+                    <li><strong>Raids:</strong> Serbuan cepat kilat (Hit and Run).</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
